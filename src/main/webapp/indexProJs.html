@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Enregistrer un produit</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="ProduitController">
+        <h2>Enregistrer un produit</h2>
+        <form ng-submit="submitProduit()">
+            <label>Nom du produit:</label>
+            <input type="text" ng-model="produit.nom" required><br>
+            <label>Prix du produit:</label>
+            <input type="number" ng-model="produit.prix" required><br>
+            <button type="submit">Enregistrer</button>
+        </form>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('ProduitController', function($scope, $http) {
+            $scope.produit = {};
+
+            $scope.submitProduit = function() {
+                $http.post('http://localhost:5000/TheVoice/produits/insert', $scope.produit)
+                .then(function(response) {
+                    console.log(response.data);
+                    // Réinitialiser le formulaire après la soumission réussie
+                    $scope.produit = {};
+                    alert('Produit enregistré avec succès.');
+                })
+                .catch(function(error) {
+                    console.error('Erreur lors de l\'enregistrement du produit:', error);
+                    alert('Erreur lors de l\'enregistrement du produit. Veuillez réessayer.');
+                });
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Composant</title>
+<script src="vendor/angular-1.8.2/angular.js" type="text/javascript"></script>
+<script src="vendor/angular-1.8.2/angular-route.js"
+	type="text/javascript"></script>
+<script src="app/compo1.js" type="text/javascript"></script>
+<script src="app/controleurs.js" type="text/javascript"></script>
+
+</head>
+<body>
+	<div ng-app="myMainApp">
+		<!-- Utilisez le module principal qui inclut les autres modules -->
+
+		<div>
+			<hello-world name="Bozi"> </hello-world>
+		</div>
+		<!-- Utilisez le composant ici -->
+		<div ng-controller="SecondController">
+			<!-- Ajoutez le contrôleur ici -->
+			<h2>{{message}}</h2>
+		</div>
+		<div ng-controller="MyControllerUn">
+			<h2>{{ok}}</h2>
+		</div>
+
+		<div ng-controller="MyControllerTwoo">
+			<h2>{{ko}}</h2>
+		</div>
+		
+	</div>
+	<!--<div ng-app="myTotal">
+		<div ng-controller="MyControllerUn">
+			<h2>{{ok}}</h2>
+		</div>
+
+		<div ng-controller="MyControllerTwoo">
+			<h2>{{ko}}</h2>
+		</div>
+	</div>-->
+
+</body>
+</html>
